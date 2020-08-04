@@ -1,0 +1,28 @@
+#SDK Finger,Tail 90 degrees to 60
+import maya.cmds as pm
+sel = pm.ls(sl=True)
+ctrl_Driver1 = sel[0]
+listDrvnjoints = cmds.listConnections('DRVNset')
+sizeLists=(len(listDrvnjoints))
+counter=0
+for cont in listDrvnjoints:
+    drvn_Grp = listDrvnjoints[counter]
+    cmds.setDrivenKeyframe(drvn_Grp,at='rotateX', cd=ctrl_Driver1+'.rotateX',dv=0,v=0)
+    cmds.setDrivenKeyframe(drvn_Grp,at='rotateX', cd=ctrl_Driver1+'.rotateX',dv=90,v=90)
+    cmds.setDrivenKeyframe(drvn_Grp,at='rotateX', cd=ctrl_Driver1+'.rotateX',dv=-90,v=-90)
+    
+    cmds.setDrivenKeyframe(drvn_Grp,at='rotateY', cd=ctrl_Driver1+'.rotateY',dv=0,v=0)
+    cmds.setDrivenKeyframe(drvn_Grp,at='rotateY', cd=ctrl_Driver1+'.rotateY',dv=90,v=90)
+    cmds.setDrivenKeyframe(drvn_Grp,at='rotateY', cd=ctrl_Driver1+'.rotateY',dv=-90,v=-90)
+    
+    cmds.setDrivenKeyframe(drvn_Grp,at='rotateZ', cd=ctrl_Driver1+'.rotateZ',dv=0,v=0)
+    cmds.setDrivenKeyframe(drvn_Grp,at='rotateZ', cd=ctrl_Driver1+'.rotateZ',dv=90,v=90)
+    cmds.setDrivenKeyframe(drvn_Grp,at='rotateZ', cd=ctrl_Driver1+'.rotateZ',dv=-90,v=-90)
+    
+    counter+=1
+
+cmds.select ("DRVNset")
+cmds.ls(sl=True)
+cmds.sets(rm="DRVNset")
+cmds.delete("DRVNset")
+cmds.select (cl=True)
