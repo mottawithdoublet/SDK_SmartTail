@@ -1,10 +1,12 @@
-#SDK Finger,Tail 90 degrees to 60
+#SDK Finger, Tail 90 degrees to 60
 import maya.cmds as pm
 sel = pm.ls(sl=True)
 ctrl_Driver1 = sel[0]
 listDrvnjoints = cmds.listConnections('DRVNset')
 sizeLists=(len(listDrvnjoints))
 counter=0
+
+#Creates each SDK values for each rotation XYZ. 
 for cont in listDrvnjoints:
     drvn_Grp = listDrvnjoints[counter]
     cmds.setDrivenKeyframe(drvn_Grp,at='rotateX', cd=ctrl_Driver1+'.rotateX',dv=0,v=0)
@@ -21,6 +23,7 @@ for cont in listDrvnjoints:
     
     counter+=1
 
+#Cleans up and deletes DRVNset group
 cmds.select ("DRVNset")
 cmds.ls(sl=True)
 cmds.sets(rm="DRVNset")
